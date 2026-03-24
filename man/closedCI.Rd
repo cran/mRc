@@ -14,36 +14,38 @@ closedCI(
 )
 }
 \arguments{
-\item{marked}{number of animals marked on first visit (M2)}
+\item{marked}{number of animals marked on first visit (\code{M2})}
 
-\item{caught}{vector of catch on subsequent visits (nk)}
+\item{caught}{vector of catch on subsequent visits (\code{nk})}
 
-\item{recaptured}{vector of recaptures on subsequent visits (mk)}
+\item{recaptured}{vector of recaptures on subsequent visits (\code{mk})}
 
-\item{newmarks}{vector of newly marked animals on subsequent visits (default: nk-mk)}
+\item{newmarks}{vector of newly marked animals on subsequent visits (default: \code{nk - mk})}
 
 \item{alpha}{type I error rate for confidence intervals (default: 0.05)}
 
 \item{ndraws}{number of bootstrap draws (default: 10,000)}
 }
 \value{
-Matrix containing population size estimates with confidence intervals for each method
+Matrix containing population size estimates with confidence intervals for each method.
 }
 \description{
 Calculate adjusted Schnabel and Schumacher-Eschmeyer estimates with confidence intervals.
 }
 \details{
 Bias adjusted estimators are based on Dettloff (2023).
-Bootstrap confidence intervals are computed using a beta-binomial distribution with n = nk, alpha = mk, beta = nk-mk.
+Bootstrap confidence intervals are computed using a beta-binomial distribution with
+\code{n = nk}, \code{alpha = mk}, and \code{beta = nk - mk}.
 }
 \examples{
-M2 = 2
-n = c(232, 524, 152, 98, 353)
-m = c(0, 5, 8, 6, 13)
+M2 <- 2
+n <- c(232, 524, 152, 98, 353)
+m <- c(0, 5, 8, 6, 13)
 set.seed(123)
 closedCI(M2, n, m, ndraws = 1000)
 }
 \references{
-Dettloff, K. (2023). Assessment of bias and precision among simple closed population mark-recapture estimators.
-Fisheries Research 265, 106756. doi: <https://doi.org/10.1016/j.fishres.2023.106756>
+Dettloff, K. (2023). Assessment of bias and precision among simple closed
+population mark-recapture estimators. \emph{Fisheries Research}, 265, 106756.
+\doi{10.1016/j.fishres.2023.106756}
 }
